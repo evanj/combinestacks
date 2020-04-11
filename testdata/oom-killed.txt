@@ -1,0 +1,78 @@
+[  341.630136] stackdemo invoked oom-killer: gfp_mask=0x6280ca(GFP_HIGHUSER_MOVABLE|__GFP_ZERO), nodemask=(null), order=0, oom_score_adj=0
+[  341.642834] stackdemo cpuset=/ mems_allowed=0
+[  341.647359] CPU: 0 PID: 28854 Comm: stackdemo Not tainted 4.19.0-8-cloud-amd64 #1 Debian 4.19.98-1
+[  341.656458] Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
+[  341.665799] Call Trace:
+[  341.668384]  dump_stack+0x66/0x90
+[  341.671868]  dump_header+0x6b/0x283
+[  341.675484]  ? do_try_to_free_pages+0x2ec/0x370
+[  341.680140]  oom_kill_process.cold.30+0xb/0x1cf
+[  341.684795]  ? oom_badness+0xe9/0x140
+[  341.688581]  out_of_memory+0x1a5/0x450
+[  341.692457]  __alloc_pages_slowpath+0xbd8/0xcb0
+[  341.697112]  __alloc_pages_nodemask+0x28b/0x2b0
+[  341.701772]  alloc_pages_vma+0x74/0x1c0
+[  341.705738]  __handle_mm_fault+0x958/0x1270
+[  341.710043]  handle_mm_fault+0xd6/0x200
+[  341.714030]  __do_page_fault+0x249/0x4f0
+[  341.718082]  ? page_fault+0x8/0x30
+[  341.721623]  page_fault+0x1e/0x30
+[  341.725064] RIP: 0033:0x74bb2c
+[  341.728250] Code: Bad RIP value.
+[  341.731600] RSP: 002b:000000c05d567f70 EFLAGS: 00010287
+[  341.736944] RAX: 000000c06c600000 RBX: 0000000000000000 RCX: 00000000000fc000
+[  341.744203] RDX: 0000000000138cd2 RSI: 0000000000000000 RDI: 0000000000100000
+[  341.751463] RBP: 000000c05d567fc8 R08: 0000000000780720 R09: 0000000000000001
+[  341.758720] R10: 000000c06c600000 R11: 000000000000037f R12: 000000000000007f
+[  341.765981] R13: 0000000000000012 R14: 000080c06c600000 R15: 000080c06c6fffff
+[  341.773266] Mem-Info:
+[  341.775671] active_anon:471245 inactive_anon:682 isolated_anon:0
+                active_file:34 inactive_file:2 isolated_file:0
+                unevictable:0 dirty:0 writeback:0 unstable:0
+                slab_reclaimable:3558 slab_unreclaimable:6143
+                mapped:163 shmem:716 pagetables:1216 bounce:0
+                free:13118 free_pcp:0 free_cma:0
+[  341.808312] Node 0 active_anon:1884980kB inactive_anon:2728kB active_file:144kB inactive_file:0kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:652kB dirty:0kB writeback:0kB shmem:2864kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 1087488kB writeback_tmp:0kB unstable:0kB all_unreclaimable? yes
+[  341.836057] Node 0 DMA free:8192kB min:352kB low:440kB high:528kB active_anon:7616kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15920kB managed:15832kB mlocked:0kB kernel_stack:0kB pagetables:24kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  341.862467] lowmem_reserve[]: 0 1963 1963 1963 1963
+[  341.867486] Node 0 DMA32 free:44280kB min:44700kB low:55872kB high:67044kB active_anon:1877028kB inactive_anon:2728kB active_file:148kB inactive_file:56kB unevictable:0kB writepending:0kB present:2079932kB managed:2027632kB mlocked:0kB kernel_stack:1632kB pagetables:4840kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  341.896209] lowmem_reserve[]: 0 0 0 0 0
+[  341.900186] Node 0 DMA: 0*4kB 0*8kB 0*16kB 2*32kB (U) 3*64kB (UM) 2*128kB (U) 0*256kB 1*512kB (M) 1*1024kB (U) 1*2048kB (M) 1*4096kB (M) = 8192kB
+[  341.913369] Node 0 DMA32: 674*4kB (UME) 433*8kB (UME) 223*16kB (UE) 122*32kB (UME) 72*64kB (UME) 38*128kB (UE) 32*256kB (UME) 16*512kB (UE) 5*1024kB (ME) 0*2048kB 0*4096kB = 44608kB
+[  341.929770] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  341.938602] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[  341.947179] 768 total pagecache pages
+[  341.950970] 0 pages in swap cache
+[  341.954418] Swap cache stats: add 0, delete 0, find 0/0
+[  341.959774] Free swap  = 0kB
+[  341.962764] Total swap = 0kB
+[  341.965796] 523963 pages RAM
+[  341.968816] 0 pages HighMem/MovableOnly
+[  341.972796] 13097 pages reserved
+[  341.976332] Tasks state (memory values in pages):
+[  341.981177] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[  341.989929] [    222]     0   222    10075      452   114688        0             0 systemd-journal
+[  341.999134] [    235]     0   235     5043      251    61440        0         -1000 systemd-udevd
+[  342.008151] [    312]     0   312     2021      886    53248        0             0 haveged
+[  342.016762] [    315]     0   315     2372      322    57344        0             0 dhclient
+[  342.025323] [    326]   104   326     2175       83    61440        0          -900 dbus-daemon
+[  342.034154] [    366]     0   366     7105     1669    94208        0             0 unattended-upgr
+[  342.043388] [    369]   106   369     3253       64    49152        0             0 chronyd
+[  342.051916] [    370]   106   370     1204       64    49152        0             0 chronyd
+[  342.060442] [    373]     0   373    29312     2193    98304        0             0 google_osconfig
+[  342.069619] [    377]     0   377      662       29    45056        0             0 agetty
+[  342.078020] [    382]     0   382     1043       31    49152        0             0 agetty
+[  342.086410] [    399]     0   399    56456      109    90112        0             0 rsyslogd
+[  342.094980] [    407]     0   407    28583     2706    94208        0          -999 google_guest_ag
+[  342.104150] [    479]     0   479     3963      209    65536        0         -1000 sshd
+[  342.112371] [    484]     0   484     9322      407   118784        0             0 systemd-logind
+[  342.121469] [    487]     0   487     1816       52    57344        0             0 cron
+[  342.129697] [    529]     0   529    27205      474   110592        0             0 sshd
+[  342.137931] [    542] 883040286   542     5255      302    77824        0             0 systemd
+[  342.146766] [    545] 883040286   545    28789      757   135168        0             0 (sd-pam)
+[  342.155696] [    558] 883040286   558    27290      525   110592        0             0 sshd
+[  342.164276] [    561] 883040286   561     7543      390   102400        0             0 bash
+[  342.172853] [  28852] 883040286 28852   634332   459168  3768320        0             0 stackdemo
+[  342.181863] Out of memory: Kill process 28852 (stackdemo) score 900 or sacrifice child
+[  342.189938] Killed process 28852 (stackdemo) total-vm:2537328kB, anon-rss:1836672kB, file-rss:0kB, shmem-rss:0kB
+[  342.231488] oom_reaper: reaped process 28852 (stackdemo), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB

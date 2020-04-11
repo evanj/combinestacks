@@ -1,0 +1,2155 @@
+goroutine 1 [running]:
+runtime/pprof.writeGoroutineStacks(0x14a0120, 0xc00018c008, 0x30, 0xd0)
+	/Users/ej/go/src/runtime/pprof/pprof.go:665 +0x9d
+runtime/pprof.writeGoroutine(0x14a0120, 0xc00018c008, 0x2, 0x0, 0x5e91b0c3)
+	/Users/ej/go/src/runtime/pprof/pprof.go:654 +0x44
+runtime/pprof.(*Profile).WriteTo(0x172fc60, 0x14a0120, 0xc00018c008, 0x2, 0xc00018c008, 0x0)
+	/Users/ej/go/src/runtime/pprof/pprof.go:329 +0x3da
+main.main()
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:50 +0x52f
+
+goroutine 34 [select]:
+net.(*Resolver).lookupIPAddr(0x173d060, 0x14a6b60, 0xc0000b4008, 0x1410064, 0x3, 0x14162a7, 0x9, 0x1f90, 0x0, 0x0, ...)
+	/Users/ej/go/src/net/lookup.go:274 +0x664
+net.(*Resolver).internetAddrList(0x173d060, 0x14a6b60, 0xc0000b4008, 0x1410064, 0x3, 0x14162a7, 0xe, 0x0, 0x0, 0x0, ...)
+	/Users/ej/go/src/net/ipsock.go:280 +0x4da
+net.(*Resolver).resolveAddrList(0x173d060, 0x14a6b60, 0xc0000b4008, 0x1411abf, 0x6, 0x1410064, 0x3, 0x14162a7, 0xe, 0x0, ...)
+	/Users/ej/go/src/net/dial.go:222 +0x49e
+net.(*ListenConfig).Listen(0xc00003df30, 0x14a6b60, 0xc0000b4008, 0x1410064, 0x3, 0x14162a7, 0xe, 0xc0000fc000, 0x0, 0x0, ...)
+	/Users/ej/go/src/net/dial.go:624 +0xaa
+net.Listen(0x1410064, 0x3, 0x14162a7, 0xe, 0xe0, 0x14038a0, 0x1, 0xc0000fc000)
+	/Users/ej/go/src/net/dial.go:707 +0x80
+net/http.(*Server).ListenAndServe(0xc0000fc000, 0xc0000fc000, 0x0)
+	/Users/ej/go/src/net/http/server.go:2826 +0x72
+net/http.ListenAndServe(...)
+	/Users/ej/go/src/net/http/server.go:3086
+main.main.func1(0xc000194000)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:26 +0x76
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:25 +0x647
+
+goroutine 35 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 36 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 37 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 38 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 39 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 40 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 41 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 42 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 43 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 44 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 45 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 46 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 47 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 48 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 49 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 50 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 51 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 52 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 53 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 54 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 55 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 56 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 57 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 58 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 59 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 60 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 61 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 62 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 63 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 64 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 65 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 66 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 67 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 68 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 69 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 70 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 71 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 72 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 73 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 74 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 75 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 76 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 77 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 78 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 79 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 80 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 81 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 82 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 83 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 84 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 85 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 86 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 87 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 88 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 89 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 90 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 91 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 92 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 93 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 94 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 95 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 96 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 97 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 20 [select]:
+net.cgoLookupIP(0x14a6b20, 0xc0000b6440, 0x1410064, 0x3, 0x14162a7, 0x9, 0xc0001a65e0, 0x11942ae, 0x173d060, 0x14a6b60, ...)
+	/Users/ej/go/src/net/cgo_unix.go:229 +0x195
+net.(*Resolver).lookupIP(0x173d060, 0x14a6b20, 0xc0000b6440, 0x1410064, 0x3, 0x14162a7, 0x9, 0x6, 0x1410064, 0x3, ...)
+	/Users/ej/go/src/net/lookup_unix.go:96 +0x187
+net.glob..func1(0x14a6b20, 0xc0000b6440, 0xc00009ade0, 0x1410064, 0x3, 0x14162a7, 0x9, 0xc0000b4008, 0x1410064, 0x3, ...)
+	/Users/ej/go/src/net/hook.go:23 +0x72
+net.(*Resolver).lookupIPAddr.func1(0x0, 0x0, 0x0, 0x0)
+	/Users/ej/go/src/net/lookup.go:268 +0xb9
+internal/singleflight.(*Group).doCall(0x173d070, 0xc00008e190, 0xc0000b42d0, 0xd, 0xc0000b6480)
+	/Users/ej/go/src/internal/singleflight/singleflight.go:95 +0x2e
+created by internal/singleflight.(*Group).DoChan
+	/Users/ej/go/src/internal/singleflight/singleflight.go:88 +0x2bc
+
+goroutine 98 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 99 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 100 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 101 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 102 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 103 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 104 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 105 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 106 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 107 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 108 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 109 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 110 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 111 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 112 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 113 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 114 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 115 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 116 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 117 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 118 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 119 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 120 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 121 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 122 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 123 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 124 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 125 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 126 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 127 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 128 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 129 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 21 [syscall]:
+net._C2func_getaddrinfo(0xc0000b42e0, 0x0, 0xc00009d470, 0xc0000b0040, 0x0, 0x0, 0x0)
+	_cgo_gotypes.go:98 +0x55
+net.cgoLookupIPCNAME.func1(0xc0000b42e0, 0xa, 0xa, 0xc00009d470, 0xc0000b0040, 0xe, 0xc0001a66a0, 0x11c5152)
+	/Users/ej/go/src/net/cgo_unix.go:161 +0xd2
+net.cgoLookupIPCNAME(0x1410064, 0x3, 0x14162a7, 0x9, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/Users/ej/go/src/net/cgo_unix.go:161 +0x183
+net.cgoIPLookup(0xc0000b24e0, 0x1410064, 0x3, 0x14162a7, 0x9)
+	/Users/ej/go/src/net/cgo_unix.go:218 +0x67
+created by net.cgoLookupIP
+	/Users/ej/go/src/net/cgo_unix.go:228 +0xc7
+
+goroutine 130 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 131 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 132 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 133 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 134 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.a2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:77 +0x66
+main.a1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:73 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:38 +0x322
+
+goroutine 135 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 136 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 137 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 138 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 139 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 140 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 141 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 142 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 143 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 144 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 145 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 146 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 147 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 148 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 149 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 150 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 151 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 152 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 153 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 154 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 155 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 156 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 157 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 158 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 159 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 160 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 161 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 162 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 163 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 164 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 165 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 166 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 167 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 168 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 169 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 170 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 171 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 172 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 173 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 174 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 175 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 176 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 177 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 178 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 179 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 180 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 181 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 182 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 183 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 184 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00019206c, 0x0, 0x1)
+	/Users/ej/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc000192068)
+	/Users/ej/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/Users/ej/go/src/sync/mutex.go:81
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
