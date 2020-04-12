@@ -22,6 +22,7 @@ func main() {
 	writeStacks := flag.String("writeStacks", "", "Path to write stacks using pprof.Profile.WriteTo")
 	writeStacksDebug := flag.Int("writeStacksDebug", 2, "pprof.Profile.WriteTo; 0=binary; 1=comments; 2=text")
 	exit := flag.Bool("exit", false, "true: Exit immediately at end; false: block forever")
+	panicAtEnd := flag.Bool("panic", false, "true: Panic at end of main()")
 	oomChunkSizeMiB := flag.Int("oomChunkSizeMiB", 1, "Size of allocations when trying to run out of memory (MiB)")
 	runningGoroutines := flag.Int("runningGoroutines", 0, "Goroutines that will be running; causes them to not be written in stacks")
 	flag.Parse()
@@ -72,14 +73,18 @@ func main() {
 			go useMemory(*oomChunkSizeMiB, *oomTouch, &blockAllStacks)
 			time.Sleep(time.Millisecond)
 		}
-	} else {
-		if *exit {
-			return
-		}
-
-		log.Printf("blocking forever ...")
-		blockAllStacks.Lock()
 	}
+
+	if *panicAtEnd {
+		panic("panic at end of main()")
+	}
+
+	if *exit {
+		return
+	}
+
+	log.Printf("blocking forever ...")
+	blockAllStacks.Lock()
 }
 
 const oneMiB = 1024 * 1024
