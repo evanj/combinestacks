@@ -9,6 +9,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 )
 
@@ -40,7 +41,7 @@ var createdByLine = regexp.MustCompile(`created by ([^ ]+)`)
 // .go stacks end with +0x66
 // .s stacks end with fp=0xcb8de6e140 sp=0xcb8de6e138 pc=0x475e60
 // we just ignore anything after the file/line number
-var fileLine = regexp.MustCompile(`([^ ]+):(\d+)($| \+| fp=).*$`)
+var fileLine = regexp.MustCompile(`([^\s]+):(\d+)($| \+| fp=).*$`)
 
 func parse(r io.Reader) ([]routine, error) {
 	parsedRoutines := []routine{}
@@ -176,18 +177,30 @@ func main() {
 		groups[h] = append(groups[h], r)
 	}
 
-	fmt.Printf("parsed %d total goroutines\n", len(routines))
-	for _, group := range groups {
-		fmt.Printf("\n%d routines:\n", len(group))
+	// sort the group keys in descending order (largest groups to smallest)
+	sortedGroupHashes := make([]stackHash, 0, len(groups))
+	for h, _ := range groups {
+		sortedGroupHashes = append(sortedGroupHashes, h)
+	}
+	sort.Slice(sortedGroupHashes, func(i int, j int) bool {
+		iGroups := groups[sortedGroupHashes[i]]
+		jGroups := groups[sortedGroupHashes[j]]
+		return len(iGroups) > len(jGroups)
+	})
 
-		fmt.Printf("%s [%s]\n", group[0].label, group[0].state)
-		for j, f := range group[0].stack {
-			fmt.Printf("  %2d: %s(%s)\n", j, f.function, f.args)
-			fmt.Printf("        %s:%d\n", f.file, f.line)
+	fmt.Printf("Found %d total goroutines\n", len(routines))
+	for _, h := range sortedGroupHashes {
+		group := groups[h]
+		fmt.Printf("\n%d goroutines; example goroutine=%s; state=[%s]\n",
+			len(group), group[0].label, group[0].state)
+
+		for _, f := range group[0].stack {
+			fmt.Printf("%s(%s)\n", f.function, f.args)
+			fmt.Printf("\t%s:%d\n", f.file, f.line)
 		}
 		if group[0].created.function != "" {
-			fmt.Printf("  created by %s\n", group[0].created.function)
-			fmt.Printf("        %s:%d\n", group[0].created.file, group[0].created.line)
+			fmt.Printf("created by %s\n", group[0].created.function)
+			fmt.Printf("\t%s:%d\n", group[0].created.file, group[0].created.line)
 		}
 	}
 }

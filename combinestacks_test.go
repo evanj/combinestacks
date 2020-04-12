@@ -13,9 +13,19 @@ func TestParse(t *testing.T) {
 	}
 
 	testCases := []test{
+		{plain, []routine{
+			routine{"1", "running",
+				// stack
+				[]frame{
+					frame{"main.main.func1", "0xc000194000", "/Users/ej/combinestacks/stackdemo/stackdemo.go", 26},
+				},
+				// created
+				frame{"main.main", "",
+					"/Users/ej/combinestacks/stackdemo/stackdemo.go", 25}},
+		}},
 		{unavailable, []routine{
 			routine{"12345", "running", nil, frame{"github.com/example/golang.org/x/sync/errgroup.(*Group).Go", "",
-			"###/go/src/github.com/example/golang.org/x/sync/errgroup/errgroup.go", 55}},
+				"###/go/src/github.com/example/golang.org/x/sync/errgroup/errgroup.go", 55}},
 		}},
 	}
 
@@ -33,6 +43,13 @@ func TestParse(t *testing.T) {
 		}
 	}
 }
+
+const plain = `goroutine 1 [running]:
+main.main.func1(0xc000194000)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:26 +0x76
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:25 +0x647
+`
 
 const unavailable = `
 extra: goroutine 12345 [running]:
