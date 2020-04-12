@@ -1,29 +1,24 @@
 # Combine Go Stacks
 
-A tool to combine Goroutine stacks that are the same from unrecovered panic output, making it easier to understand crashes. This helps summarize what a big program with many goroutines was doing when it crashed.
-
-Try it: https://combinestacks.evanjones.ca/
-
-More details: https://www.evanjones.ca/hack-combine-stacks.html
+A tool to combine goroutines from the plain text stack trace output, making it easier to understand crashes from large program. Try it in your browser: https://combinestacks.evanjones.ca/ . For details, see my blog post: https://www.evanjones.ca/go-stack-traces.html .
 
 
-If you record pprof data via /debug/pprof/goroutine or `pprof.Profile.WriteTo`, you can use `go tool pprof` to visualize it. I recommend using the web interface with `-http=localhost:8080` or https://pprofweb.evanjones.ca/ for my hacky publicly accessible version.
+## Usage
+
+1. Get the stacks in the plain text format somehow.
+2. Run `combinestacks < (file)`
+
+You can also run the web version instead with `combinestacks --addr=localhost:8080`, or by setting the `PORT` environment variable.
 
 
-## Dumping stacks
+## stackdemo
 
-Go provides a few different ways to dump all the stacks in a process:
-
-* `/debug/pprof/goroutine`, `pprof.Profile.WriteTo(..., debug=0)`: The binary pprof format. You will need to use `go tool pprof` to view this.
-* `/debug/pprof/goroutine?debug=1`, `pprof.Profile.WriteTo(..., debug=1)`: Plain text with comments with details.
-* `/debug/pprof/goroutine?debug=2`, `pprof.Profile.WriteTo(..., debug=2)`: Plain text in the same format as unrecovered panic.
-* GOTRACEBACK=all unrecovered panic: This happens if the processes runs out of memory or has another uncaught panic see: https://golang.org/pkg/runtime/#hdr-Environment_Variables
+The stackdemo program provides a variety of command line flags to trigger different types of stack traces. I also put a number of different kinds I generated with this tool in the `testdata` directory.
 
 
-## OOM 
+## Wishlist
 
-uname -r: Debian 10 on Google Cloud: 4.19.0-8-cloud-amd64
+Things that I will probably never implement:
 
-/proc/sys/vm/overcommit_memory = 1: Basically the OOM killer is always invoked because every allocation "works" and it defers until the page is accessed
-/proc/sys/vm/overcommit_memory = 0: Go fails with runtime out of memory
-
+* Parse the stacks then output a profile, e.g. in pprof format. This would allow this to be connected to pprofweb: https://pprofweb.evanjones.ca/
+* Create an HTML interface to allow you to expand/collapse stacks, and maybe display the different states for a collection of goroutines (e.g. running, blocked, etc?)

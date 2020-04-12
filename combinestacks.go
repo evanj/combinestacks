@@ -5,13 +5,22 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"
+	"flag"
 	"fmt"
 	"io"
+	"log"
+	"net/http"
 	"os"
 	"regexp"
 	"sort"
 	"strconv"
+	"strings"
 )
+
+const portEnvVar = "PORT"
+const uploadPath = "/upload"
+const textFormID = "contexts"
+const maxFormMemoryBytes = 32 * 1024 * 1024
 
 type frame struct {
 	function string
@@ -165,12 +174,8 @@ func hash(r routine) stackHash {
 	return output
 }
 
-func main() {
-	routines, err := parse(os.Stdin)
-	if err != nil {
-		panic(err)
-	}
-
+// writeAggregated writes aggregated stacks to w.
+func writeAggregated(w io.Writer, routines []routine) error {
 	groups := map[stackHash][]routine{}
 	for _, r := range routines {
 		h := hash(r)
@@ -188,19 +193,146 @@ func main() {
 		return len(iGroups) > len(jGroups)
 	})
 
-	fmt.Printf("Found %d total goroutines\n", len(routines))
+	fmt.Fprintf(w, "Found %d total goroutines\n", len(routines))
 	for _, h := range sortedGroupHashes {
 		group := groups[h]
-		fmt.Printf("\n%d goroutines; example goroutine=%s; state=[%s]\n",
+		fmt.Fprintf(w, "\n%d goroutines; example goroutine=%s; state=[%s]\n",
 			len(group), group[0].label, group[0].state)
 
 		for _, f := range group[0].stack {
-			fmt.Printf("%s(%s)\n", f.function, f.args)
-			fmt.Printf("\t%s:%d\n", f.file, f.line)
+			fmt.Fprintf(w, "%s(%s)\n", f.function, f.args)
+			fmt.Fprintf(w, "\t%s:%d\n", f.file, f.line)
 		}
 		if group[0].created.function != "" {
-			fmt.Printf("created by %s\n", group[0].created.function)
-			fmt.Printf("\t%s:%d\n", group[0].created.file, group[0].created.line)
+			fmt.Fprintf(w, "created by %s\n", group[0].created.function)
+			fmt.Fprintf(w, "\t%s:%d\n", group[0].created.file, group[0].created.line)
 		}
 	}
+	return nil
+}
+
+func handleUpload(w http.ResponseWriter, r *http.Request) {
+	log.Printf("handleUpload %s %s", r.Method, r.URL.String())
+	if r.Method != http.MethodPost {
+		http.Error(w, "wrong method", http.StatusMethodNotAllowed)
+		return
+	}
+	err := r.ParseMultipartForm(maxFormMemoryBytes)
+	if err != nil {
+		panic(err)
+	}
+	v := r.FormValue(textFormID)
+	if v == "" {
+		http.Error(w, "must provide content", http.StatusBadRequest)
+		return
+	}
+
+	routines, err := parse(strings.NewReader(v))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain;charset=utf-8")
+	err = writeAggregated(w, routines)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func handleRoot(w http.ResponseWriter, r *http.Request) {
+	log.Printf("handleRoot %s %s", r.Method, r.URL.String())
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.Error(w, "invalid method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	_, err := w.Write([]byte(rootTemplate))
+	if err != nil {
+		panic(err)
+	}
+}
+
+const rootTemplate = `<!doctype html>
+<html>
+<head><title>Combine Go Stacks</title></head>
+<body>
+<h1>Combine Go Stacks</h1>
+<p>Paste Go stack traces in text format, and get a report with the same traces combined, sorted from most goroutines to fewest. This is useful for figuring out what a big program was doing when it crashed. See <a href="https://www.evanjones.ca/go-stace-traces.html">my blog post for details</a>.</p>
+
+<form method="post" action="` + uploadPath + `" enctype="multipart/form-data">
+<textarea name="` + textFormID + `" rows="10" cols="120" wrap="off" autofocus></textarea>
+<p><input type="submit" value="Upload"></p>
+</form>
+
+<h2>Example Input</h2>
+<pre>
+goroutine 182 [semacquire]:
+main.b2(0xc000192068)
+  /Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+  /Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+  /Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+
+goroutine 182 [semacquire]:
+main.b2(0xc000192068)
+  /Users/ej/combinestacks/stackdemo/stackdemo.go:86 +0x66
+main.b1(0xc000192068)
+  /Users/ej/combinestacks/stackdemo/stackdemo.go:82 +0x2b
+created by main.main
+  /Users/ej/combinestacks/stackdemo/stackdemo.go:41 +0x367
+</pre>
+
+<h2>Example Output</h2>
+<pre>
+Found 2 total goroutines
+
+2 goroutines; example goroutine=182; state=[semacquire]
+main.b2(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:86
+main.b1(0xc000192068)
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:82
+created by main.main
+	/Users/ej/combinestacks/stackdemo/stackdemo.go:41
+<pre>
+</body>
+</html>
+`
+
+func serveHTTP(addr string) error {
+	http.HandleFunc("/", handleRoot)
+	http.HandleFunc(uploadPath, handleUpload)
+	log.Printf("listening on http://%s ...", addr)
+	return http.ListenAndServe(addr, nil)
+}
+
+func main() {
+	addr := flag.String("addr", "", "If set, address for HTTP requests. If not set, reads from stdin.")
+	flag.Parse()
+
+	if *addr == "" && os.Getenv(portEnvVar) != "" {
+		*addr = ":" + os.Getenv(portEnvVar)
+	}
+	if *addr != "" {
+		err := serveHTTP(*addr)
+		if err != nil {
+			panic(err)
+		}
+		return
+	}
+
+	routines, err := parse(os.Stdin)
+	if err != nil {
+		panic(err)
+	}
+	err = writeAggregated(os.Stdout, routines)
+	if err != nil {
+		panic(err)
+	}
+
 }
