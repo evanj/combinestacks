@@ -184,7 +184,7 @@ func writeAggregated(w io.Writer, routines []routine) error {
 
 	// sort the group keys in descending order (largest groups to smallest)
 	sortedGroupHashes := make([]stackHash, 0, len(groups))
-	for h, _ := range groups {
+	for h := range groups {
 		sortedGroupHashes = append(sortedGroupHashes, h)
 	}
 	sort.Slice(sortedGroupHashes, func(i int, j int) bool {

@@ -1,6 +1,6 @@
 # Combine Go Stacks
 
-A tool to combine goroutines from the plain text stack trace output, making it easier to understand crashes from large program. Try it in your browser: https://combinestacks.evanjones.ca/ . For details, see my blog post: https://www.evanjones.ca/go-stack-traces.html .
+A tool to combine goroutines from the plain text stack trace output, making it easier to understand crashes from large program. [Try it in your browser: https://combinestacks.evanjones.ca/](https://combinestacks.evanjones.ca/). For details, see [my blog post](https://www.evanjones.ca/go-stack-traces.html).
 
 
 ## Usage
@@ -22,3 +22,11 @@ Things that I will probably never implement:
 
 * Parse the stacks then output a profile, e.g. in pprof format. This would allow this to be connected to pprofweb: https://pprofweb.evanjones.ca/
 * Create an HTML interface to allow you to expand/collapse stacks, and maybe display the different states for a collection of goroutines (e.g. running, blocked, etc?)
+
+
+## Publishing
+
+Requires access to Google:
+
+* `docker build . --tag=us.gcr.io/gosignin-demo/combinestacks:$(date +%Y%m%d)`
+* `docker push us.gcr.io/gosignin-demo/combinestacks:$(date +%Y%m%d)`
