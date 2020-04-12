@@ -6,9 +6,6 @@ set -euf -o pipefail
 # echo commands
 set -x
 
-# Ensure protocol buffer definitions are up to date
-make
-
 # Run tests
 go test -mod=readonly -race ./...
 
