@@ -1,6 +1,6 @@
 # Combine Go Stacks
 
-A tool to combine goroutines from the plain text stack trace output, making it easier to understand crashes from large program. [Try it in your browser: https://combinestacks.evanjones.ca/](https://combinestacks.evanjones.ca/). For details, see [my blog post](https://www.evanjones.ca/go-stack-traces.html).
+A tool to combine goroutines from the plain text stack trace output, making it easier to understand crashes from large program. [Try it in your browser: https://combinestacks.evanjones.ca/](https://combinestacks.evanjones.ca/). For details, see [my blog post](https://www.evanjones.ca/go-stack-traces.html). You should use [PanicParse instead](https://github.com/maruel/panicparse), it is much better.
 
 
 ## Usage
@@ -14,6 +14,11 @@ You can also run the web version instead with `combinestacks --addr=localhost:80
 ## stackdemo
 
 The stackdemo program provides a variety of command line flags to trigger different types of stack traces. I also put a number of different kinds I generated with this tool in the `testdata` directory.
+
+
+## Forked Panic Parse
+
+This enabled me to stick it in Google Cloud Run by adding the exportpanicparse package. I forked commit 39eb59531d3294324864495c73901e9745e67aff.
 
 
 ## Wishlist
