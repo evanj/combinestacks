@@ -1,5 +1,5 @@
 FROM golang:1.14.2-buster AS builder
-COPY go.mod combinestacks.go /go/src/combinestacks/
+COPY . /go/src/combinestacks/
 WORKDIR /go/src/combinestacks
 RUN go build --mod=readonly combinestacks.go
 

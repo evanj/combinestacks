@@ -15,10 +15,13 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/evanj/combinestacks/forked/panicparse/exportpanicparse"
 )
 
 const portEnvVar = "PORT"
 const uploadPath = "/upload"
+const panicParsePath = "/panicparse"
 const textFormID = "contexts"
 const maxFormMemoryBytes = 32 * 1024 * 1024
 
@@ -240,6 +243,30 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func handlePanicParse(w http.ResponseWriter, r *http.Request) {
+	log.Printf("handlePanicParse %s %s", r.Method, r.URL.String())
+	if r.Method != http.MethodPost {
+		http.Error(w, "wrong method", http.StatusMethodNotAllowed)
+		return
+	}
+	err := r.ParseMultipartForm(maxFormMemoryBytes)
+	if err != nil {
+		panic(err)
+	}
+	v := r.FormValue(textFormID)
+	if v == "" {
+		http.Error(w, "must provide content", http.StatusBadRequest)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/html;charset=utf-8")
+	err = exportpanicparse.ProcessHTML(strings.NewReader(v), w)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
 func handleRoot(w http.ResponseWriter, r *http.Request) {
 	log.Printf("handleRoot %s %s", r.Method, r.URL.String())
 	if r.URL.Path != "/" {
@@ -262,11 +289,11 @@ const rootTemplate = `<!doctype html>
 <head><title>Combine Go Stacks</title></head>
 <body>
 <h1>Combine Go Stacks</h1>
-<p>Paste Go stack traces in text format, and get a report with the same traces combined, sorted from most goroutines to fewest. This is useful for figuring out what a big program was doing when it crashed. See <a href="https://www.evanjones.ca/go-stace-traces.html">my blog post for details</a>.</p>
+<p>Paste Go stack traces in text format, and get a report with the same traces combined. This is useful for figuring out what a big program was doing when it crashed. See <a href="https://www.evanjones.ca/go-stace-traces.html">my blog post for details</a>. The code powering this is <a href="https://github.com/maruel/panicparse">panicparse</a>, which is a great tool!</p>
 
-<form method="post" action="` + uploadPath + `" enctype="multipart/form-data">
+<form method="post" action="` + panicParsePath + `" enctype="multipart/form-data">
 <textarea name="` + textFormID + `" rows="10" cols="120" wrap="off" autofocus></textarea>
-<p><input type="submit" value="Upload"></p>
+<p><input type="submit" value="Panic Parse"> <input type="submit" value="More Hacky Parser" formaction="` + uploadPath + `"></p>
 </form>
 
 <h2>Example Input</h2>
@@ -307,6 +334,7 @@ created by main.main
 func serveHTTP(addr string) error {
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc(uploadPath, handleUpload)
+	http.HandleFunc(panicParsePath, handlePanicParse)
 	log.Printf("listening on http://%s ...", addr)
 	return http.ListenAndServe(addr, nil)
 }
