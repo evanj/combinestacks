@@ -1,4 +1,4 @@
-FROM golang:1.14.2-buster AS builder
+FROM golang:1.14.4-buster AS builder
 COPY . /go/src/combinestacks/
 WORKDIR /go/src/combinestacks
 RUN go build --mod=readonly combinestacks.go
