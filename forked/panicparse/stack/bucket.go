@@ -26,7 +26,7 @@ const (
 // Aggregate merges similar goroutines into buckets.
 //
 // The buckets are ordered in library provided order of relevancy. You can
-// reorder at your chosing.
+// reorder at your choosing.
 func Aggregate(goroutines []*Goroutine, similar Similarity) []*Bucket {
 	type count struct {
 		ids   []int
@@ -78,6 +78,9 @@ type Bucket struct {
 	// First is true if this Bucket contains the first goroutine, e.g. the one
 	// Signature that likely generated the panic() call, if any.
 	First bool
+
+	// Disallow initialization with unnamed parameters.
+	_ struct{}
 }
 
 // less does reverse sort.

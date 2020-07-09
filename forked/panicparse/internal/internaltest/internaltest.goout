@@ -189,7 +189,7 @@ func build(tool string, race bool) string {
 	}
 	path := "github.com/maruel/panicparse/cmd/"
 	if IsUsingModules() {
-		path = "github.com/evanj/combinestacks/forked/panicparse/cmd/"
+		path = "github.com/maruel/panicparse/v2/cmd/"
 	}
 	c := exec.Command("go", append(args, path+tool)...)
 	b := bytes.Buffer{}

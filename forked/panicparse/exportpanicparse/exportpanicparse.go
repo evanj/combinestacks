@@ -24,5 +24,5 @@ func ProcessHTML(in io.Reader, out io.Writer) error {
 
 	s := stack.AnyPointer
 	buckets := stack.Aggregate(c.Goroutines, s)
-	return htmlstack.Write(out, buckets, needsEnv, false)
+	return htmlstack.WriteBuckets(out, buckets, needsEnv, false)
 }

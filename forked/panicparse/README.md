@@ -4,8 +4,8 @@ Parses panic stack traces, densifies and deduplicates goroutines with similar
 stack traces. Helps debugging crashes and deadlocks in heavily parallelized
 process.
 
-[![GoDoc](https://godoc.org/github.com/evanj/combinestacks/forked/panicparse/stack?status.svg)](https://pkg.go.dev/github.com/evanj/combinestacks/forked/panicparse/stack)
-[![Go Report Card](https://goreportcard.com/badge/github.com/evanj/combinestacks/forked/panicparse)](https://goreportcard.com/report/github.com/evanj/combinestacks/forked/panicparse)
+[![GoDoc](https://godoc.org/github.com/maruel/panicparse/stack?status.svg)](https://pkg.go.dev/github.com/maruel/panicparse/stack)
+[![Go Report Card](https://goreportcard.com/badge/github.com/maruel/panicparse)](https://goreportcard.com/report/github.com/maruel/panicparse)
 [![Coverage Status](https://codecov.io/gh/maruel/panicparse/graph/badge.svg)](https://codecov.io/gh/maruel/panicparse)
 [![Build Status](https://travis-ci.org/maruel/panicparse.svg)](https://travis-ci.org/maruel/panicparse)
 
@@ -17,8 +17,10 @@ panicparse helps make sense of Go crash dumps:
 
 ## Features
 
+   * **New in v2.0.0!**: Completely refactored stack package for higher
+     performance.
    * **New in v1.4.0!**:
-     [webstack.SnapshotHandler](https://pkg.go.dev/github.com/evanj/combinestacks/forked/panicparse/stack/webstack#SnapshotHandler)
+     [webstack.SnapshotHandler](https://pkg.go.dev/github.com/maruel/panicparse/stack/webstack#SnapshotHandler)
      is a http handler that serves a very tight and swell snapshot of your
      goroutines, much more readable than
      [net/http/pprof](https://golang.org/pkg/net/http/pprof).
@@ -41,12 +43,12 @@ panicparse helps make sense of Go crash dumps:
 
 `panicparse` was created with ❤️️ and passion by [Marc-Antoine
 Ruel](https://github.com/maruel) and
-[friends](https://github.com/evanj/combinestacks/forked/panicparse/graphs/contributors).
+[friends](https://github.com/maruel/panicparse/graphs/contributors).
 
 
 ## Installation
 
-    go get github.com/evanj/combinestacks/forked/panicparse/cmd/pp
+    go get github.com/maruel/panicparse/cmd/pp
 
 
 ## Usage
@@ -158,7 +160,7 @@ you may be running the _Perl PAR Packager_ instead of panicparse.
 You have two choices, either you put `$GOPATH/bin` at the beginning of `$PATH`
 or use long name `panicparse` with:
 
-    go get github.com/evanj/combinestacks/forked/panicparse
+    go get github.com/maruel/panicparse
 
 then using `panicparse` instead of `pp`:
 
