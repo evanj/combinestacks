@@ -28,11 +28,11 @@
 {{- /* Accepts a Call */ -}}
 {{- define "RenderCall" -}}
   <span class="call"><a href="{{srcURL .}}">{{.SrcName}}:{{.Line}}</a> <span class="{{funcClass .}}">
-  <a href="{{pkgURL .}}">{{.Func.PkgName}}.{{.Func.Name}}</a></span>({{template "RenderArgs" .Args}})</span>
+  <a href="{{pkgURL .}}">{{.Func.DirName}}.{{.Func.Name}}</a></span>({{template "RenderArgs" .Args}})</span>
   {{- if isDebug -}}
   <br>SrcPath: {{.SrcPath}}
   <br>LocalSrcPath: {{.LocalSrcPath}}
-  <br>Func: {{.Func.Raw}}
+  <br>Func: {{.Func.Complete}}
   <br>IsStdlib: {{.IsStdlib}}
   {{- end -}}
 {{- end -}}
@@ -44,7 +44,7 @@
       <tr>
         <td>{{$i}}</td>
         <td>
-          <a href="{{pkgURL $e}}">{{$e.Func.PkgName}}</a>
+          <a href="{{pkgURL $e}}">{{$e.Func.DirName}}</a>
         </td>
         <td>
           <a href="{{srcURL $e}}">{{$e.SrcName}}:{{$e.Line}}</a>
@@ -134,6 +134,10 @@
   .created {
     white-space: nowrap;
   }
+  .race {
+    font-weight: 700;
+    color: #600;
+  }
   .topright {
     float: right;
   }
@@ -203,20 +207,39 @@ document.addEventListener("DOMContentLoaded", ready);
     {{- /* Only shown when augment query parameter is not specified */ -}}
     <a class=button id=augment href="?augment=1">Analyse sources</a>
   </div>
-  {{- range $i, $e := .Buckets -}}
-    {{$l := len $e.IDs}}
-    <h1>Signature #{{$i}}: <span class="{{routineClass $e}}">{{$l}} routine{{if ne 1 $l}}s{{end}}: <span class="state">{{$e.State}}</span>
-    {{- if $e.SleepMax -}}
-      {{- if ne $e.SleepMin $e.SleepMax}} <span class="sleep">[{{$e.SleepMin}}~{{$e.SleepMax}} mins]</span>
-      {{- else}} <span class="sleep">[{{$e.SleepMax}} mins]</span>
+  {{- if .Buckets -}}
+    {{- range $i, $e := .Buckets -}}
+      {{$l := len $e.IDs}}
+      <h1>Signature #{{$i}}: <span class="{{bucketClass $e}}">{{$l}} routine{{if ne 1 $l}}s{{end}}: <span class="state">{{$e.State}}</span>
+      {{- if $e.SleepMax -}}
+        {{- if ne $e.SleepMin $e.SleepMax}} <span class="sleep">[{{$e.SleepMin}}~{{$e.SleepMax}} mins]</span>
+        {{- else}} <span class="sleep">[{{$e.SleepMax}} mins]</span>
+        {{- end -}}
       {{- end -}}
+      </h1>
+      {{if $e.Locked}} <span class="locked">[locked]</span>
+      {{- end -}}
+      {{- if $e.CreatedBy.Calls}} <span class="created">Created by: {{template "RenderCall" index $e.CreatedBy.Calls 0}}</span>
+      {{- end -}}
+      {{template "RenderCalls" $e.Signature.Stack}}
     {{- end -}}
-    </h1>
-    {{if $e.Locked}} <span class="locked">[locked]</span>
+  {{- else -}}
+    {{- range $i, $e := .Routines -}}
+      <h1>Routine {{$e.ID}}: <span class="{{routineClass $e}}">: <span class="state">{{$e.State}}</span>
+      {{- if $e.SleepMax -}}
+        {{- if ne $e.SleepMin $e.SleepMax}} <span class="sleep">[{{$e.SleepMin}}~{{$e.SleepMax}} mins]</span>
+        {{- else}} <span class="sleep">[{{$e.SleepMax}} mins]</span>
+        {{- end -}}
+      {{- end -}}
+      </h1>
+      {{if $e.Locked}} <span class="locked">[locked]</span>
+      {{- end -}}
+      {{if $e.RaceAddr}} <span class="race">Race {{if $e.RaceWrite}}write{{else}}read{{end}} @ {{$e.RaceAddr}}</span><br>
+      {{- end -}}
+      {{- if $e.CreatedBy.Calls}} <span class="created">Created by: {{template "RenderCall" index $e.CreatedBy.Calls 0}}</span>
+      {{- end -}}
+      {{template "RenderCalls" $e.Signature.Stack}}
     {{- end -}}
-    {{- if $e.CreatedBy.Func.Raw}} <span class="created">Created by: {{template "RenderCall" $e.CreatedBy}}</span>
-    {{- end -}}
-    {{template "RenderCalls" $e.Signature.Stack}}
   {{- end -}}
 </div>
 <p>
@@ -229,7 +252,7 @@ document.addEventListener("DOMContentLoaded", ready);
     <li>GOMAXPROCS: {{.GOMAXPROCS}}</li>
     {{- if .NeedsEnv -}}
       <li>To see all goroutines, visit <a
-      href=https://github.com/evanj/combinestacks/forked/panicparse#gotraceback>github.com/evanj/combinestacks/forked/panicparse</a></li>
+      href=https://github.com/maruel/panicparse#gotraceback>github.com/maruel/panicparse</a></li>
     {{- end -}}
   </ul>
 </div>

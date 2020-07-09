@@ -7,16 +7,16 @@
 // It is a tool to help test pp, it is used in its unit tests.
 //
 // To install, run:
-//   go install github.com/evanj/combinestacks/forked/panicparse/cmd/panic
+//   go install github.com/maruel/panicparse/cmd/panic
 //   panic -help
 //   panic str |& pp
 //
 // Some panics require the race detector with -race:
-//   go install -race github.com/evanj/combinestacks/forked/panicparse/cmd/panic
+//   go install -race github.com/maruel/panicparse/cmd/panic
 //   panic race |& pp
 //
 // To use with inlining disabled, build with -gcflags '-l' like:
-//   go install -gcflags '-l' github.com/evanj/combinestacks/forked/panicparse/cmd/panic
+//   go install -gcflags '-l' github.com/maruel/panicparse/cmd/panic
 package main
 
 // To add a new panic stack signature, add it to types type below, keeping the
@@ -102,16 +102,16 @@ func recurse(i int) {
 	panic(42)
 }
 
-func panicRaceDisabled() {
-	help := "'panic race' can only be used when built with the race detector.\n" +
+func panicRaceDisabled(name string) {
+	help := "'panic %s' can only be used when built with the race detector.\n" +
 		"To build, use:\n" +
-		"  go install -race github.com/evanj/combinestacks/forked/panicparse/cmd/panic\n"
-	io.WriteString(stdErr, help)
+		"  go install -race github.com/maruel/panicparse/cmd/panic\n"
+	fmt.Fprintf(stdErr, help, name)
 }
 
 func rerunWithFastCrash() {
 	if os.Getenv("GORACE") != "log_path=stderr halt_on_error=1" {
-		os.Setenv("GORACE", "log_path=stderr halt_on_error=1")
+		_ = os.Setenv("GORACE", "log_path=stderr halt_on_error=1")
 		c := exec.Command(os.Args[0], os.Args[1:]...)
 		c.Stderr = os.Stderr
 		if err, ok := c.Run().(*exec.ExitError); ok {
@@ -124,26 +124,61 @@ func rerunWithFastCrash() {
 	}
 }
 
-func panicRaceEnabled() {
-	rerunWithFastCrash()
-	i := 0
-	for j := 0; j < 2; j++ {
-		go func() {
-			for {
-				i++
-			}
-		}()
+// panicDoRaceWrite and panicDoRaceRead are extracted from panicRace() to make
+// the stack trace less trivial, but in general folks will do the error with
+// this code inlined.
+func panicDoRaceWrite(x *int) {
+	for i := 0; ; i++ {
+		*x = i
 	}
-	time.Sleep(time.Minute)
+}
+func panicDoRaceRead(x *int) {
+	for i := 0; ; {
+		i += *x
+	}
 }
 
 func panicRace() {
-	if raceEnabled {
-		panicRaceEnabled()
-	} else {
-		panicRaceDisabled()
+	if !raceEnabled {
+		panicRaceDisabled("race")
+		return
 	}
+	rerunWithFastCrash()
+
+	i := 0
+	// Do two separate calls so that the 'created at' stacks are different.
+	go func() {
+		panicDoRaceWrite(&i)
+	}()
+	go func() {
+		panicDoRaceRead(&i)
+	}()
+	time.Sleep(time.Minute)
 }
+
+/* TODO(maruel): This is not detected!
+func panicRaceUnaligned() {
+	if !raceEnabled {
+		panicRaceDisabled("race_unaligned")
+		return
+	}
+	rerunWithFastCrash()
+
+	a := [8]byte{}
+	b := (*int64)(unsafe.Pointer(&a[0]))
+	go func() {
+		for i := 0; ; i++ {
+			a[4] = byte(i)
+		}
+	}()
+	go func() {
+		for {
+			*b++
+		}
+	}()
+	time.Sleep(time.Minute)
+}
+*/
 
 //
 
@@ -272,7 +307,7 @@ var types = map[string]struct {
 			// https://github.com/golang/go/issues/20588
 			//
 			// Repro:
-			//   go install -race github.com/evanj/combinestacks/forked/panicparse/cmd/panic; panic asleep
+			//   go install -race github.com/maruel/panicparse/cmd/panic; panic asleep
 			var mu sync.Mutex
 			mu.Lock()
 			mu.Lock()
@@ -283,6 +318,13 @@ var types = map[string]struct {
 		"cause a crash by race detector",
 		panicRace,
 	},
+
+	/* TODO(maruel): This is not detected!
+	"race_unaligned": {
+		"cause a crash by race detector with unaligned access",
+		panicRaceUnaligned,
+	},
+	*/
 
 	"stack_cut_off": {
 		"recursive calls with too many call lines in traceback, causing higher up calls to missing",
@@ -371,7 +413,7 @@ Set GOTRACEBACK before running this tool to see how it affects the panic output.
 
 Select the way to panic:
 `
-	io.WriteString(stdErr, t)
+	_, _ = io.WriteString(stdErr, t)
 	names := make([]string, 0, len(types))
 	m := 0
 	for n := range types {
