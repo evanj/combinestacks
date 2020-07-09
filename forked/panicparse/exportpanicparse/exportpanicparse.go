@@ -3,6 +3,7 @@ package exportpanicparse
 import (
 	"io"
 	"log"
+	"sort"
 
 	"github.com/evanj/combinestacks/forked/panicparse/internal/htmlstack"
 	"github.com/evanj/combinestacks/forked/panicparse/stack"
@@ -24,5 +25,11 @@ func ProcessHTML(in io.Reader, out io.Writer) error {
 
 	s := stack.AnyPointer
 	buckets := stack.Aggregate(c.Goroutines, s)
+
+	// Returned in goroutine id order; sort in order of most goroutine to fewest
+	sort.Slice(buckets, func(i int, j int) bool {
+		return len(buckets[i].IDs) > len(buckets[j].IDs)
+	})
+
 	return htmlstack.WriteBuckets(out, buckets, needsEnv, false)
 }
