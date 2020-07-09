@@ -8,6 +8,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -22,7 +23,8 @@ import (
 const portEnvVar = "PORT"
 const uploadPath = "/upload"
 const panicParsePath = "/panicparse"
-const textFormID = "contexts"
+const textFormID = "text"
+const fileFormID = "file"
 const maxFormMemoryBytes = 32 * 1024 * 1024
 
 type frame struct {
@@ -214,20 +216,55 @@ func writeAggregated(w io.Writer, routines []routine) error {
 	return nil
 }
 
+var errMissing = errors.New("combinestacks: missing stack text")
+
+func getStackText(r *http.Request) (string, error) {
+	err := r.ParseMultipartForm(maxFormMemoryBytes)
+	if err != nil {
+		return "", err
+	}
+
+	// try the form field first then fall back to file upload
+	v := r.FormValue(textFormID)
+	if v != "" {
+		return v, nil
+	}
+
+	mpf, _, err := r.FormFile(fileFormID)
+	if err == http.ErrMissingFile {
+		return "", errMissing
+	}
+	if err != nil {
+		return "", err
+	}
+	fBytes, err := ioutil.ReadAll(mpf)
+	if err != nil {
+		return "", err
+	}
+	err = mpf.Close()
+	if err != nil {
+		return "", err
+	}
+	v = string(fBytes)
+	if v == "" {
+		return "", errMissing
+	}
+	return v, nil
+}
+
 func handleUpload(w http.ResponseWriter, r *http.Request) {
 	log.Printf("handleUpload %s %s", r.Method, r.URL.String())
 	if r.Method != http.MethodPost {
 		http.Error(w, "wrong method", http.StatusMethodNotAllowed)
 		return
 	}
-	err := r.ParseMultipartForm(maxFormMemoryBytes)
+	v, err := getStackText(r)
 	if err != nil {
+		if err == errMissing {
+			http.Error(w, "must provide content", http.StatusBadRequest)
+			return
+		}
 		panic(err)
-	}
-	v := r.FormValue(textFormID)
-	if v == "" {
-		http.Error(w, "must provide content", http.StatusBadRequest)
-		return
 	}
 
 	routines, err := parse(strings.NewReader(v))
@@ -249,14 +286,13 @@ func handlePanicParse(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "wrong method", http.StatusMethodNotAllowed)
 		return
 	}
-	err := r.ParseMultipartForm(maxFormMemoryBytes)
+	v, err := getStackText(r)
 	if err != nil {
+		if err == errMissing {
+			http.Error(w, "must provide content", http.StatusBadRequest)
+			return
+		}
 		panic(err)
-	}
-	v := r.FormValue(textFormID)
-	if v == "" {
-		http.Error(w, "must provide content", http.StatusBadRequest)
-		return
 	}
 
 	w.Header().Set("Content-Type", "text/html;charset=utf-8")
@@ -293,7 +329,8 @@ const rootTemplate = `<!doctype html>
 
 <form method="post" action="` + panicParsePath + `" enctype="multipart/form-data">
 <textarea name="` + textFormID + `" rows="10" cols="120" wrap="off" autofocus></textarea>
-<p><input type="submit" value="Panic Parse"> <input type="submit" value="More Hacky Parser" formaction="` + uploadPath + `"></p>
+<p>Alternative file upload: <input type="file" name="` + fileFormID + `"></p>
+<p><input type="submit" value="Panic Parse"> <input type="submit" value="Hacky Parser (might collapse more)" formaction="` + uploadPath + `"></p>
 </form>
 
 <h2>Example Input</h2>
@@ -331,12 +368,18 @@ created by main.main
 </html>
 `
 
+func makeHandlers() http.Handler {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", handleRoot)
+	mux.HandleFunc(uploadPath, handleUpload)
+	mux.HandleFunc(panicParsePath, handlePanicParse)
+	return mux
+}
+
 func serveHTTP(addr string) error {
-	http.HandleFunc("/", handleRoot)
-	http.HandleFunc(uploadPath, handleUpload)
-	http.HandleFunc(panicParsePath, handlePanicParse)
+	mux := makeHandlers()
 	log.Printf("listening on http://%s ...", addr)
-	return http.ListenAndServe(addr, nil)
+	return http.ListenAndServe(addr, mux)
 }
 
 func main() {
