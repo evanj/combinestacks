@@ -283,7 +283,6 @@ func handlePanicParse(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	log.Printf("input=%#v", v)
 	w.Header().Set("Content-Type", "text/html;charset=utf-8")
 
 	parseOutput := &bytes.Buffer{}
