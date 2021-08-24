@@ -2,11 +2,13 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"
 	"flag"
 	"fmt"
+	"html/template"
 	"io"
 	"io/ioutil"
 	"log"
@@ -17,7 +19,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/evanj/combinestacks/forked/panicparse/exportpanicparse"
+	"github.com/maruel/panicparse/v2/stack"
 )
 
 const portEnvVar = "PORT"
@@ -136,24 +138,10 @@ func parse(r io.Reader) ([]routine, error) {
 	return parsedRoutines, nil
 }
 
-func print(routines []routine) {
-	for i, routine := range routines {
-		fmt.Printf("%d %s [%s]\n", i, routine.label, routine.state)
-		for j, f := range routine.stack {
-			fmt.Printf("  %2d: %s(%s)\n", j, f.function, f.args)
-			fmt.Printf("        %s:%d\n", f.file, f.line)
-		}
-		if routine.created.function != "" {
-			fmt.Printf("  created by %s\n", routine.created.function)
-			fmt.Printf("        %s:%d\n", routine.created.file, routine.created.line)
-		}
-	}
-}
-
 type stackHash [sha256.Size]byte
 
 func (s stackHash) String() string {
-	return hex.EncodeToString(s[0:len(s)])
+	return hex.EncodeToString(s[:])
 }
 
 func hashFrame(w io.Writer, f frame) {
@@ -295,8 +283,22 @@ func handlePanicParse(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
+	log.Printf("input=%#v", v)
 	w.Header().Set("Content-Type", "text/html;charset=utf-8")
-	err = exportpanicparse.ProcessHTML(strings.NewReader(v), w)
+
+	parseOutput := &bytes.Buffer{}
+	parseOpts := stack.DefaultOpts()
+	parseOpts.AnalyzeSources = false
+	parseOpts.GuessPaths = false
+	snapshot, suffix, err := stack.ScanSnapshot(strings.NewReader(v), parseOutput, parseOpts)
+	if err != nil {
+		log.Printf("parse output: %s; len(suffix)=%d; error=%s", parseOutput.String(), len(suffix), err.Error())
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	aggregated := snapshot.Aggregate(stack.AnyValue)
+	footer := template.HTML("")
+	err = aggregated.ToHTML(w, footer)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -325,7 +327,11 @@ const rootTemplate = `<!doctype html>
 <head><title>Combine Go Stacks</title></head>
 <body>
 <h1>Combine Go Stacks</h1>
-<p>Paste Go stack traces in text format, and get a report with the same traces combined. This is useful for figuring out what a big program was doing when it crashed. See <a href="https://www.evanjones.ca/go-stace-traces.html">my blog post for details</a>. The code powering this is <a href="https://github.com/maruel/panicparse">panicparse</a>, which is a great tool!</p>
+<p>Paste Go stack traces in text format, and get a report with the same traces combined. This is useful for figuring out what a big program was doing when it crashed. See <a href="https://www.evanjones.ca/go-stack-traces.html">my blog post for details</a>. The code powering this is <a href="https://github.com/maruel/panicparse">panicparse</a>, which is a great tool!</p>
+
+<p><strong>NOTE:</strong> PanicParse currently breaks with the new Go 1.17 stack trace format. Use Hacky Parser instead.</p>
+
+<p>To get stacks, send <code>SIGQUIT</code> to the process, but it will kill the process. You can also use the pprof handler: <code>curl http://localhost:12345/debug/pprof/goroutine?debug=2</code></p>
 
 <form method="post" action="` + panicParsePath + `" enctype="multipart/form-data">
 <textarea name="` + textFormID + `" rows="10" cols="120" wrap="off" autofocus></textarea>

@@ -25,14 +25,23 @@ func TestParse(t *testing.T) {
 					frame{"main.main.func1", "0xc000194000", "/Users/ej/combinestacks/stackdemo/stackdemo.go", 26},
 				},
 				// created
-				frame{"main.main", "",
-					"/Users/ej/combinestacks/stackdemo/stackdemo.go", 25}},
+				frame{"main.main", "", "/Users/ej/combinestacks/stackdemo/stackdemo.go", 25}},
 		}},
 		{unavailable, []routine{
 			routine{"12345", "running", nil, frame{"github.com/example/golang.org/x/sync/errgroup.(*Group).Go", "",
 				"###/go/src/github.com/example/golang.org/x/sync/errgroup/errgroup.go", 55}},
 		}},
-	}
+		{go117format, []routine{
+			routine{"1", "running",
+				// stack
+				[]frame{
+					frame{"runtime/pprof.writeGoroutineStacks", "{0x710780, 0xc000010098}", "/home/ej/go/src/runtime/pprof/pprof.go", 693},
+					frame{"runtime/pprof.writeGoroutine", "{0x710780, 0xc000010098}, 0x8cc680", "/home/ej/go/src/runtime/pprof/pprof.go", 682},
+				},
+				// created
+				frame{},
+			}},
+		}}
 
 	for i, testCase := range testCases {
 		output, err := parse(strings.NewReader(testCase.input))
@@ -143,4 +152,14 @@ extra: goroutine 12345 [running]:
 extra: ###goroutine running on other thread; stack unavailable
 extra: created by github.com/example/golang.org/x/sync/errgroup.(*Group).Go
 extra: ###/go/src/github.com/example/golang.org/x/sync/errgroup/errgroup.go:55 +0xab
+`
+
+// Go 1.17 changed the format for arguments. See:
+// https://go-review.googlesource.com/c/go/+/304470
+// https://github.com/maruel/panicparse/issues/61
+const go117format = `goroutine 1 [running]:
+runtime/pprof.writeGoroutineStacks({0x710780, 0xc000010098})
+        /home/ej/go/src/runtime/pprof/pprof.go:693 +0x70
+runtime/pprof.writeGoroutine({0x710780, 0xc000010098}, 0x8cc680)
+        /home/ej/go/src/runtime/pprof/pprof.go:682 +0x2b
 `
