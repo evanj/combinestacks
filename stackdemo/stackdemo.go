@@ -9,9 +9,21 @@ import (
 	"os"
 	"runtime"
 	"runtime/pprof"
-	"sync"
 	"time"
 )
+
+// syncEvent blocks waiting threads until release is called
+type syncEvent struct {
+	done chan struct{}
+}
+
+func newSyncEvent() syncEvent {
+	return syncEvent{make(chan struct{})}
+}
+
+func (s *syncEvent) wait() {
+	<-s.done
+}
 
 func main() {
 	aStacks := flag.Int("numAStacks", 100, "Number of A stacks")
@@ -37,9 +49,8 @@ func main() {
 		}()
 	}
 
-	// start the stacks
-	blockAllStacks := sync.Mutex{}
-	blockAllStacks.Lock()
+	// start the stacks, but stop all of them from returning
+	blockAllStacks := newSyncEvent()
 
 	for i := 0; i < *aStacks; i++ {
 		go a1(&blockAllStacks)
@@ -84,12 +95,12 @@ func main() {
 	}
 
 	log.Printf("blocking forever ...")
-	blockAllStacks.Lock()
+	blockAllStacks.wait()
 }
 
 const oneMiB = 1024 * 1024
 
-func useMemory(chunkSizeMiB int, touch bool, mu *sync.Mutex) {
+func useMemory(chunkSizeMiB int, touch bool, block *syncEvent) {
 	mem := make([]byte, chunkSizeMiB*oneMiB)
 	if touch {
 		// touch all pages to ensure they are allocated
@@ -97,29 +108,26 @@ func useMemory(chunkSizeMiB int, touch bool, mu *sync.Mutex) {
 			mem[i] = byte(i)
 		}
 	}
-	mu.Lock()
-	mu.Unlock()
+	block.wait()
 
 	// ensure mem is held across the lock
 	fmt.Println(mem[len(mem)-1])
 }
 
-func a1(mu *sync.Mutex) {
-	a2(mu)
+func a1(block *syncEvent) {
+	a2(block)
 }
 
-func a2(mu *sync.Mutex) {
-	mu.Lock()
-	mu.Unlock()
+func a2(block *syncEvent) {
+	block.wait()
 }
 
-func b1(mu *sync.Mutex) {
-	b2(mu)
+func b1(block *syncEvent) {
+	b2(block)
 }
 
-func b2(mu *sync.Mutex) {
-	mu.Lock()
-	mu.Unlock()
+func b2(block *syncEvent) {
+	block.wait()
 }
 
 func burnCPU() int {
