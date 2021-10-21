@@ -1,4 +1,4 @@
-FROM golang:1.17-bullseye AS builder
+FROM golang:1.17.2-bullseye AS builder
 COPY . /go/src/combinestacks/
 WORKDIR /go/src/combinestacks
 RUN go build --mod=readonly combinestacks.go
